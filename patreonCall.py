@@ -6,6 +6,10 @@ from config import *
 import patreon
 from flask import request
 #auth patreon api
+from flask import Flask, render_template
+
+
+
 api_client = patreon.API(access_token)
 
 campaign_response = api_client.fetch_campaign()
@@ -50,6 +54,17 @@ sorted_pledges = sorted(
 
 pledge_names = [pledge['first_name'] for pledge in sorted_pledges]
 print (pledge_names)
+# pledge_list = ', '.join(pledge_names)
+# print(pledge_list)
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    # return pledge_list
+    return render_template('home.html', pledge_names=pledge_names)
+if __name__ == '__main__':
+    # app.run()
+    app.run(host="0.0.0.0" ,port=80)
 #prints names of patrons
 # for pledge in pledges_info:
 #     print(pledge['first_name'])
