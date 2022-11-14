@@ -4,6 +4,7 @@ import patreon
 import requests
 from config import *
 import patreon
+import time
 from flask import request
 #auth patreon api
 from flask import Flask, render_template
@@ -53,6 +54,10 @@ sorted_pledges = sorted(
 )
 
 pledge_names = [pledge['first_name'] for pledge in sorted_pledges]
+
+for x in pledge_names:
+  print(x)
+  time.sleep(3)
 print (pledge_names)
 # pledge_list = ', '.join(pledge_names)
 # print(pledge_list)
