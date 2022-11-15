@@ -29,7 +29,9 @@
         <div class="tweet-header-info">
           Thank You! <span>@unDivided_Patron</span><span>. Nov 14
     </span>
-          <p>Thank you, <span class=elementToFadeInAndOut> {{ pledge_names }} </span>for your support. Lets make common sense common again!</p>
+          <p>Thank you, <span class=elementToFadeInAndOut> {%if len(pledge_names) >0 %}
+            {{pledge_names.pop(1)}} </span>for your support. Lets make common sense common again!</p>
+            {% endif %}
           
         </div>
         

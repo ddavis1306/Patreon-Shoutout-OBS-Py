@@ -4,6 +4,8 @@ import patreon
 import requests
 from config import *
 import patreon
+from jinja2 import nodes
+from jinja2.ext import Extension
 import time
 from flask import request
 #auth patreon api
@@ -55,10 +57,11 @@ sorted_pledges = sorted(
 
 pledge_names = [pledge['first_name'] for pledge in sorted_pledges]
 
-for x in pledge_names:
-  print(x)
-  time.sleep(3)
-print (pledge_names)
+# for x in pledge_names:
+#   print(x)
+#   time.sleep(3)
+# print (pledge_names)
+
 # pledge_list = ', '.join(pledge_names)
 # print(pledge_list)
 app = Flask(__name__)
@@ -66,7 +69,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     # return pledge_list
-    return render_template('home.html', pledge_names=pledge_names)
+    return render_template('home.html', pledge_names=pledge_names, len=len)
 if __name__ == '__main__':
     # app.run()
     app.run(host="0.0.0.0" ,port=80)
